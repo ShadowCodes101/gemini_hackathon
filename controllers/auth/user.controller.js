@@ -18,6 +18,25 @@ export const getCurrentUser = async (req, res) => {
     }
 };
 
+export const verifyToken = async (req, res) => {
+    try {
+        return res.status(200).json({
+            success: true,
+            message: 'Token is valid',
+            data: {
+                user: req.user
+            }
+        });
+    } catch (error) {
+        console.error('Verify token error:', error);
+        return res.status(500).json({
+            success: false,
+            error: 'Internal server error',
+            message: 'Failed to verify token'
+        });
+    }
+};
+
 export const refreshToken = async (req, res) => {
     try {
         const { refresh_token } = req.body;

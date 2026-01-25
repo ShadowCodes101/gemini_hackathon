@@ -2,6 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth.routes.js';
+import projectRoutes from './routes/project.routes.js';
+import taskRoutes from './routes/task.routes.js';
+import noteRoutes from './routes/note.routes.js';
 
 dotenv.config();
 
@@ -32,6 +35,9 @@ app.get('/api/v1/healthcheck', (req, res) => {
 
 
 app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/projects', projectRoutes);
+app.use('/api/v1/tasks', taskRoutes);
+app.use('/api/v1/notes', noteRoutes);
 
 //error handler
 app.use((req, res) => {
