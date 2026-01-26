@@ -10,7 +10,8 @@ import {
     verifyEmail,
     forgotPassword,
     resetPassword,
-    resendEmailVerification
+    resendEmailVerification,
+    verifyToken
 } from '../controllers/auth/index.js';
 
 const router = express.Router();
@@ -25,6 +26,7 @@ router.post('/reset-password/:resetToken', resetPassword);
 
 // Protected routes
 router.post('/logout', requireAuth, logout);
+router.get('/verify', requireAuth, verifyToken);
 router.get('/current-user', requireAuth, getCurrentUser);
 router.post('/change-password', requireAuth, changePassword);
 router.post('/resend-email-verification', requireAuth, resendEmailVerification);
